@@ -5,10 +5,16 @@ Balerion
 
 ##Balerion is a very basic crawler that does the following stuff.
 
-1. Take a given input url and fetch all the links on that page into a repository of links.
+1. Take a given input url and fetch all the links using regest match on that page into a repository of links.
 2. Take a random url from existing repository and repeat step 1 recursively.
 3. Stop when all the links have been fetched / previously set limit of max fetch is reached.
 
+##Working :
+    # initiate the crawler and enter the url to crawl
+    python3 crawler.py 
+    # test suite
+    python3 test.py
+    
 ## Identifying links in page content
 
 ###Day 1: 
