@@ -1,7 +1,7 @@
 import re
 import urllib.request
 
-class Belarian(object):
+class Balerian(object):
     
     def __init__(self, input_url):
         self.seed_target = input_url
@@ -28,5 +28,5 @@ class Belarian(object):
 if __name__ == '__main__':
     print("enter the url to crawl")
     input_url = input()
-    bela = Belarian(input_url)
+    bela = Balerian(input_url)
     bela.crawl()

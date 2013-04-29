@@ -1,9 +1,9 @@
 import unittest
-from crawler import Belarian
+from crawler import Balerian
 
-class TestBelarian(unittest.TestCase):
+class TestBalarian(unittest.TestCase):
     def setUp(self):
-        self.bela = Belarian('http://rohitjangid.com')
+        self.bela = Balerian('http://rohitjangid.com')
     
     def test_functioning(self):
         self.assertEqual(27, self.bela.crawl())
