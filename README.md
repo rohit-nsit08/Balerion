@@ -36,6 +36,17 @@ todos for tomorrow:
 
 ### Day 2
 
-1. identify internal links and external links. we only store internal links. 
+major update
+
+1. maintain a queue of ramaining links to be processes. 
+2. use hashtable to keep track of old links and only add links to queue iff they are new. 
+3. used beautifulsoup for html processing. 
+4. filters added for checking content-type and http-header scheme. 
+5. downgraded python version to 2.7.4
+
+###next:
+1. robots.txt check
+2. switch for internal and external links.
+3. explore multiple connections or parallel links to improve performance
 
 
