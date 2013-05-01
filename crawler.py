@@ -11,7 +11,8 @@ import traceback
 
 logging.config.dictConfig(LOGGING)
 logger = logging.getLogger("crawler_logger")
-    
+robot = robotparser.RobotFileParser()
+
 class Balerian(object):
     """
         single class crawler
@@ -29,14 +30,19 @@ class Balerian(object):
     def allowed_for_processing(self, next_url):
         parsedUrl = urlparse(next_url)
         if(parsedUrl.scheme != 'http'):
+            logger.warning("Non followable URl: %s " % next_url)
             return False
+        robot.set_url(parsedUrl.scheme + parsedUrl.netloc + "/robots.txt")
+        if not robot.can_fetch('Balerian', next_url.encode('ascii', 'replace')):
+        		logger.warning("Url disallowed by robots.txt: %s " % next_url)
+        		return False
         return True
         
     def crawl(self) :
         logger.info("starting (%s)... "% sys.argv[1])
         while(self.queue and self.count <= 100):
             next_url = self.queue.popleft()     
-
+        
             if(next_url == 0):
                 self.level += 1
                 self.queue.append(0) 
