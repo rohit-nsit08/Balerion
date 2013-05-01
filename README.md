@@ -36,4 +36,6 @@ todos for tomorrow:
 
 ### Day 2
 
+1. identify internal links and external links. we only store internal links. 
+
 
