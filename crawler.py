@@ -14,7 +14,7 @@ logger = logging.getLogger("crawler_logger")
     
 class Balerian(object):
     """
-        single class compiler
+        single class crawler
     """
     def __init__(self, link, external):
         self.root = link
