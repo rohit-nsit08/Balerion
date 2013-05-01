@@ -11,9 +11,9 @@ Balerion
 
 ##Working :
     # initiate the crawler and enter the url to crawl
-    python3 crawler.py 
-    # test suite
-    python3 test.py
+    python crawler.py http://rohitjangid.com 1 
+    # test suite [ bug identified. don't run ]
+    python test.py
     
 ## Identifying links in page content
 
@@ -49,4 +49,5 @@ major update
 2. switch for internal and external links.
 3. explore multiple connections or parallel links to improve performance
 
-
+### Day 3 
+1. logging support added. [ yawning ... ] 

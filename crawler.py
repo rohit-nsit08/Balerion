@@ -1,22 +1,29 @@
-import re
+import re, sys
 import robotparser
-from urllib2 import Request
 import urllib2
+import logging, logging.config
+from urllib2 import Request
 from collections import deque
 from urlparse import urlparse
 from bs4 import BeautifulSoup
+from settings import LOGGING
+import traceback
 
+logging.config.dictConfig(LOGGING)
+logger = logging.getLogger("crawler_logger")
+    
 class Balerian(object):
     """
         single class compiler
     """
-    def __init__(self, link):
+    def __init__(self, link, external):
         self.root = link
         self.queue = deque([link])
         self.queue.append(0)
         self.visited = {}
         self.level = 0
         self.count = 0
+        self.external = external
     
     
     def allowed_for_processing(self, next_url):
@@ -26,9 +33,10 @@ class Balerian(object):
         return True
         
     def crawl(self) :
+        logger.info("starting (%s)... "% sys.argv[1])
         while(self.queue and self.count <= 100):
             next_url = self.queue.popleft()     
-            
+
             if(next_url == 0):
                 self.level += 1
                 self.queue.append(0) 
@@ -39,11 +47,16 @@ class Balerian(object):
             self.visited[next_url] = True
         
             req = Request(next_url)
-            response = urllib2.urlopen(req)
+            try:
+                response = urllib2.urlopen(req)
+            except:
+                logger.warning("Unfollowable link found at %s " % next_url)
+                continue
             header = response.info()
             if('text/html' not in header['Content-Type']) : continue
             
-            print "read "+ next_url + " at level = "+str(self.level)
+            # print "read "+ next_url + " at level = "+str(self.level)
+            logger.info("visited: %s at level %d" % (next_url, self.level))
             self.count += 1
             
             data = response.read()
@@ -56,9 +69,15 @@ class Balerian(object):
             
             
 if __name__ == '__main__':
-    print("enter the root url")
-    input_url = raw_input()
-    bela = Balerian(input_url)
+    
+    try:
+        input_url = sys.argv[1]
+        external  = sys.argv[2]
+    except IndexError:
+        logger.info("Error: Incorrect start url / external options were passed")
+        exit()
+    
+    bela = Balerian(sys.argv[1], sys.argv[2])
     bela.crawl()
         
         
