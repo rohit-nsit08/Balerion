@@ -51,3 +51,10 @@ major update
 
 ### Day 3 
 1. logging support added. [ yawning ... ] 
+
+### Day 4 . lot to be documented
+trying to solve url uniqueness problem : seems to be the most important issue for a crawler. 
+
+standard url format : scheme://netloc/path;parameters?query#fragment.
+
+possible strategy : url normalization followed by priorities . urls in same domain should be traversed earlier than external ones. 
