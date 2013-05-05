@@ -1,8 +1,11 @@
+"""
+placeholder
+"""
 import heapq
 import urllib2
 from urlnorm import url_normalize
 
-class Priority_Queue(object):
+class PriorityQueue(object):
 
     """ A wrapper over python heapq which maintains uniqueness"""
 
@@ -32,11 +35,13 @@ class Priority_Queue(object):
             Pops element out from the heap.
         """
 
-        return heapq.heappop(self.heap)
+        return heapq.heappop(self.heap)[1]
         
-class BalerianRedirectHandler(urllib2.HTTPRedirectHandler):
+class BalerionRedirectHandler(urllib2.HTTPRedirectHandler):
 
     """ add Custom URL redirects handlers here. """
+    def __init__(self):
+        pass
 
     def http_error_302(self, req, fp, code, msg, headers):
         return fp
@@ -60,3 +65,4 @@ class AttrDict(dict):
 
     def __setattr__(self, key, value):
         self.update({key: value})
+

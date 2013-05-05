@@ -10,11 +10,35 @@ Balerion
 3. Stop when all the links have been fetched / previously set limit of max fetch is reached.
 
 ##Working :
-    # initiate the crawler and enter the url to crawl
-    python crawler.py http://rohitjangid.com 1 
-    # test suite [ bug identified. don't run ]
+    # python crawler.py [root-url] [external-allowed] [redirect allowed] [max-limit]
+    # 1 => allowed | 0 => not allowed
+    python http://rohitjangid.com 1 1 100
+    # test suite
     python test.py
     
+
+Basic algorithm:
+
+1. take input seed url
+2. if seed url is valid .. push it into the queue with 0 priority. proceed 
+3. while queue is not empty or max-limit not reached. pop next-url
+3.a read the page and extract the http-links
+3.b normalize them and store in a priority queue which maintaines unique links only using help of hashtable. internal links given priority 1. external given 2
+3.c repeat  
+
+
+###credits: 
+* [blog.mischel.com](http://blog.mischel.com/2011/12/26/writing-a-web-crawler-queue-management-part-1/) 
+* [theanti9-pycrawler](https://github.com/theanti9/PyCrawler)
+* [wrttnwrd-cmcrawler](https://github.com/wrttnwrd/cmcrawler)
+* [block8437-python-spyder](https://github.com/block8437/python-spyder)
+* [oocities](http://www.oocities.org/foranuj/Ai/chrisdoc/swarch.htm)
+* [bbrodriges-pholcidae](https://github.com/bbrodriges/pholcidae/)     
+
+
+
+the making
+----------------------------- 
 ## Identifying links in page content
 
 ###Day 1: 
@@ -52,9 +76,17 @@ major update
 ### Day 3 
 1. logging support added. [ yawning ... ] 
 
-### Day 4 . lot to be documented
+### Day 4 . lots of reading and lot to be documented
 trying to solve url uniqueness problem : seems to be the most important issue for a crawler. 
 
 standard url format : scheme://netloc/path;parameters?query#fragment.
 
 possible strategy : url normalization followed by priorities . urls in same domain should be traversed earlier than external ones. 
+
+### Day5. 
+normalization and using priority queue allowed features of internal links only . and minimization of infinite loop situation.
+
+### Day 6, 7 
+laptop out of reach. :-/ couldn't do anything. 
+
+

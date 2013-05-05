@@ -140,6 +140,7 @@ def url_normalize(url, charset='utf-8'):
         auth += ":" + port
     if url.endswith("#") and query == "" and fragment == "":
         path += "#"
+    fragment = ""
     return urlparse.urlunsplit((scheme, auth, path, query, fragment))
 
 if __name__ == "__main__":
