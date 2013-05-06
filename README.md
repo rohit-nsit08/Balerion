@@ -22,9 +22,12 @@ Basic algorithm:
 1. take input seed url
 2. if seed url is valid .. push it into the queue with 0 priority. proceed 
 3. while queue is not empty or max-limit not reached. pop next-url
-3.a read the page and extract the http-links
-3.b normalize them and store in a priority queue which maintaines unique links only using help of hashtable. internal links given priority 1. external given 2
+3.a read the page and extract the http-links  
+3.b normalize them and store in a priority queue which maintaines unique links only using help of hashtable.   internal links given priority 1. external given 2  
 3.c repeat  
+
+##pylint score
+10/10 for crawler.py  
 
 
 ###credits: 

@@ -1,0 +1,12 @@
+[2013-05-06 05:28:38,089] INFO::(P:48781 T:140735303084384)::crawler - Error: Incorrect start url / external options were passed
+[2013-05-06 05:30:11,255] INFO::(P:48854 T:140735303084384)::crawler - Error: Incorrect start url / external options were passed
+[2013-05-06 05:30:42,766] INFO::(P:48880 T:140735303084384)::crawler - Error: Incorrect start url / external options were passed
+ note: all three parameters required
+[2013-05-06 05:30:49,528] INFO::(P:48884 T:140735303084384)::crawler - starting at (http://healthifyme.com/)... 
+[2013-05-06 05:30:49,861] INFO::(P:48884 T:140735303084384)::crawler - visited: http://healthifyme.com/ 
+[2013-05-06 05:30:50,453] INFO::(P:48884 T:140735303084384)::crawler - visited: http://healthifyme.com/about 
+[2013-05-06 05:30:56,029] INFO::(P:48887 T:140735303084384)::crawler - starting at (http://healthifyme.com/)... 
+[2013-05-06 05:30:56,365] INFO::(P:48887 T:140735303084384)::crawler - visited: http://healthifyme.com/ 
+[2013-05-06 05:30:56,957] INFO::(P:48887 T:140735303084384)::crawler - visited: http://healthifyme.com/about 
+[2013-05-06 05:31:00,574] INFO::(P:48887 T:140735303084384)::crawler - visited: http://blog.healthifyme.com/ 
+[2013-05-06 05:31:01,045] INFO::(P:48887 T:140735303084384)::crawler - visited: http://healthifyme.com/about/ 

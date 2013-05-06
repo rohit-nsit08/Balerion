@@ -155,14 +155,14 @@ if __name__ == '__main__':
     
     try:
         INPUT_URL = sys.argv[1]
-        ALLOW_EXTERNAL  = sys.argv[2]
-        ALLOW_REDIRECTS = sys.argv[3]
-        MAX_LIMIT = sys.argv[3]
+        ALLOW_EXTERNAL  = int(sys.argv[2])
+        ALLOW_REDIRECTS = int(sys.argv[3])
+        MAX_LIMIT = int(sys.argv[4])
     except IndexError:
-        LOGGER.info("Error: Incorrect start url / external options were passed")
+        LOGGER.info("Error: Incorrect start url / external options were passed\n note: all three parameters required")
         exit()
     
-    BELA = Balerion(url_normalize(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]))
+    BELA = Balerion(url_normalize(INPUT_URL), ALLOW_EXTERNAL, ALLOW_REDIRECTS, MAX_LIMIT)
     BELA.crawl()
         
         
