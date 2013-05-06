@@ -1,7 +1,7 @@
 """
 
 front facing module for crawler. 
-format: python crawler.py [root_url] [ALLOW_EXTERNAL] [ALLOW_REDIRECTS]
+format: python crawler.py [root_url] [ALLOW_EXTERNAL] [ALLOW_REDIRECTS] [ MAX-LIMIT]
 
 """
 
@@ -22,7 +22,7 @@ ROBOT = robotparser.RobotFileParser()
 
 class Balerion(object):
     """
-        Once the largest dragon in westeros, also the name this simple python web crawler :-) .
+        Once the largest dragon in westeros, also the name of this simple python web crawler :-) .
     """
     def __init__(self, link, allow_external, allow_redirects, max_limit = 10):
         self.root = link
@@ -36,7 +36,7 @@ class Balerion(object):
     
     def pre_process(self):
         """
-        placeholder
+        exit the function if seed url is not a valid url
         """
         if(self.allowed_for_processing(self.root)):
             self.unparsed_urls.add(self.root, priority = 0)
@@ -77,7 +77,7 @@ class Balerion(object):
         
     def process_page_links(self, raw_html, url):
         """
-        placeholder
+        simply extracts html links using awesome beautifulsoup
         """
         beautiful_html = BeautifulSoup(raw_html)
         
@@ -104,7 +104,7 @@ class Balerion(object):
     
     def fetch_url(self, url):
         """
-        placeholder
+        fetches url and returns an object represenation which store headers and status etc.
         """
         page = AttrDict()
         try:
@@ -135,7 +135,7 @@ class Balerion(object):
             
     def crawl(self):
         """
-            placeholder
+            crawling algorithm 
         """
         self.pre_process()
         LOGGER.info("starting at (%s)... "% self.root)
